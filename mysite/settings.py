@@ -34,6 +34,7 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
+    "blog.apps.BlogConfig",
     "bookmark.apps.BookmarkConfig",
     'django.contrib.admin',
     'django.contrib.auth',
@@ -59,7 +60,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'templates'),
+            # os.path.join(BASE_DIR, 'templates'),
+            # 'bookmark/templates/bookmark',
         ],
         'APP_DIRS': True,
         'OPTIONS': {

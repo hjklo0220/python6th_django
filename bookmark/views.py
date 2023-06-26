@@ -7,11 +7,11 @@ from bookmark.models import Bookmark
 # Create your views here.
 
 class BookmarkLV(ListView):
-	model = Bookmark
+    model = Bookmark
 
 
 class BookmarkDV(DetailView):
-	model = Bookmark
+    model = Bookmark
 
 
 
