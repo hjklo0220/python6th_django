@@ -34,6 +34,8 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'taggit.apps.TaggitAppConfig',
+    'taggit_templatetags2',
     "blog.apps.BlogConfig",
     "bookmark.apps.BookmarkConfig",
     'django.contrib.admin',
