@@ -1,15 +1,18 @@
-<h1>Blog List</h1>
-<br>
+{% extends 'base.html' %}
 
-{% for post in posts %}
-    <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
-    {{ post.modify_dt|date:"N d, Y" }}
-    <p>{{ post.description }}</p>
-{% endfor %}
+{% block content %}
+    <h1>Blog List</h1>
+    <br>
 
-<br>
+    {% for post in posts %}
+        <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+        {{ post.modify_dt|date:"N d, Y" }}
+        <p>{{ post.description }}</p>
+    {% endfor %}
 
-<div>
+    <br>
+
+    <div>
     <span>
         {% if page_obj.has_previous %}
             <a href="?page={{ page_obj.previous_page_number }}">PreviousPage</a>
@@ -21,4 +24,5 @@
             <a href="?page={{ page_obj.next_page_number }}">NextPage</a>
         {% endif %}
     </span>
-</div>
+    </div>
+{% endblock content %}
