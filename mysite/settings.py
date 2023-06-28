@@ -34,6 +34,7 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'photo.apps.PhotoConfig',
     'taggit.apps.TaggitAppConfig',
     'taggit_templatetags2',
     "blog.apps.BlogConfig",
