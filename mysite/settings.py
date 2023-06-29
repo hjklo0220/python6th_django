@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -143,4 +144,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DISQUS_SHORTNAME = 'python6th-django'
 DISQUS_MY_DOMAIN = 'http://127.0.0.1:8000'
+
+
+LOGIN_REDIRECT_URL = '/'
 
