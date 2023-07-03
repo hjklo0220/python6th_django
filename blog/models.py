@@ -4,6 +4,8 @@ from django.urls import reverse
 from taggit.managers import TaggableManager
 
 
+
+
 # Create your models here.
 class Post(models.Model):
 	title = models.CharField(verbose_name='TITLE', max_length=50)
@@ -38,5 +40,7 @@ class Post(models.Model):
 		from django.utils.text import slugify
 		self.slug = slugify(self.title, allow_unicode=True)
 		super().save(*args, **kwargs)
+
+
 
 
