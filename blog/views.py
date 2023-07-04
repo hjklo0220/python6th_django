@@ -2,6 +2,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
 from django.shortcuts import render
 from django.conf import settings
+from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, ArchiveIndexView, YearArchiveView, MonthArchiveView, \
     DayArchiveView, TodayArchiveView, TemplateView, FormView, CreateView, UpdateView, DeleteView
 
@@ -95,16 +96,31 @@ class SearchFormView(FormView):
 
 
 class PostCreateView(LoginRequiredMixin, CreateView):
-	pass
+    model = Post
+    fields = ['title', 'slug', 'description', 'content', 'tags']
+    initial = {'slug': 'auto-filling-do-not-input'}
+    success_url = reverse_lazy('blog:index')
+
+    def form_valid(self, form):
+        form.instance.owner = self.request.user
+        return super().form_valid(form)
 
 
 class PostChangeLV(LoginRequiredMixin, ListView):
-	pass
+    template_name = 'blog/post_change_list.html'
+
+    def get_queryset(self):
+        return Post.objects.filter(owner=self.request.user)
 
 
 class PostUpdateView(OwnerOnlyMixin, UpdateView):
-	pass
+    model = Post
+    fields = ['title', 'slug', 'description', 'content', 'tags']
+    success_url = reverse_lazy('blog:index')
 
 
 class PostDeleteView(OwnerOnlyMixin, DeleteView):
-	pass
+    model = Post
+    success_url = reverse_lazy('blog:index')
+
+
